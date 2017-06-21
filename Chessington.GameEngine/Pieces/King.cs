@@ -10,7 +10,14 @@ namespace Chessington.GameEngine.Pieces
 
         public override IEnumerable<Square> GetAvailableMoves(Board board)
         {
-            return Enumerable.Empty<Square>();
-        }
+	        yield return Square.At(board.FindPiece(this).Row + 1, board.FindPiece(this).Col);
+	        yield return Square.At(board.FindPiece(this).Row - 1, board.FindPiece(this).Col);
+	        yield return Square.At(board.FindPiece(this).Row, board.FindPiece(this).Col + 1);
+	        yield return Square.At(board.FindPiece(this).Row, board.FindPiece(this).Col - 1);
+	        yield return Square.At(board.FindPiece(this).Row + 1, board.FindPiece(this).Col + 1);
+	        yield return Square.At(board.FindPiece(this).Row - 1, board.FindPiece(this).Col + 1);
+	        yield return Square.At(board.FindPiece(this).Row + 1, board.FindPiece(this).Col - 1);
+	        yield return Square.At(board.FindPiece(this).Row - 1, board.FindPiece(this).Col - 1);
+		}
     }
 }
